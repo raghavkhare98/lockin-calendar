@@ -1,0 +1,8 @@
+#Mac specific ignores
+.DS_Store
+
+#Env files
+.env
+
+#Cache files
+__pycache__
