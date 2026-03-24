@@ -14,5 +14,6 @@ class LockinUserAdmin(UserAdmin):
         "is_staff",
         "is_active",
     ]
+    ordering = ["email"]
 
 admin.site.register(LockinUser, LockinUserAdmin)
