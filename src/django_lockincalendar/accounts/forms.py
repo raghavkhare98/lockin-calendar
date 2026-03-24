@@ -1,15 +1,15 @@
 from django.contrib.auth.forms import AdminUserCreationForm, UserChangeForm
 
-from .models import CustomUser
+from .models import LockinUser
 
-class CustomUserCreationForm(AdminUserCreationForm):
-
-    class Meta:
-        model = CustomUser
-        fields = ("username", "email")
-
-class CustomUserChangeForm(UserChangeForm):
+class LockinUserCreationForm(AdminUserCreationForm):
 
     class Meta:
-        model = CustomUser
-        fields = ("username", "email")
+        model = LockinUser
+        fields = ("email", "password")
+
+class LockinUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = LockinUser
+        fields = ("email", "password")

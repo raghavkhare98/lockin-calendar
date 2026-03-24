@@ -1,19 +1,18 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from .forms import LockinUserCreationForm, LockinUserChangeForm
+from .models import LockinUser
 # Register your models here.
 
-class CustomUserAdmin(UserAdmin):
-    add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
-    model = CustomUser
+class LockinUserAdmin(UserAdmin):
+    add_form = LockinUserCreationForm
+    form = LockinUserChangeForm
+    model = LockinUser
     list_display = [
         "email",
-        "username",
         "is_staff",
         "is_active",
     ]
 
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(LockinUser, LockinUserAdmin)
