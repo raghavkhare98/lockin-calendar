@@ -20,7 +20,7 @@ class LockinUserManager(BaseUserManager):
 class LockinUser(AbstractUser):
     email = models.EmailField(unique=True)
     lockin_activities = models.CharField(max_length=128, default="Empty")
-    user_photo = models.ImageField(upload_to="uploads/", default=None)
+    user_photo = models.ImageField(upload_to="uploads/", null=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
