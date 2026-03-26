@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from datetime import date
 
 class LockinUserManager(BaseUserManager):
     
@@ -19,7 +20,7 @@ class LockinUserManager(BaseUserManager):
 
 class LockinUser(AbstractUser):
     email = models.EmailField(unique=True)
-    lockin_activities = models.CharField(max_length=128, default="Empty")
+    lockin_activities = models.CharField(max_length=128, default="")
     user_photo = models.ImageField(upload_to="uploads/", null=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -29,3 +30,17 @@ class LockinUser(AbstractUser):
     @property
     def username(self):
         return self.get_username()
+
+class LockinActivity(models.Model):
+    activity_username = models.ForeignKey(LockinUser, on_delete=models.CASCADE)
+    activity_name = models.CharField(max_length=128, null=False)
+    activity_duration = models.DateField(default=date.today, null=False)
+    activity_description = models.CharField(max_length=256, blank=True)
+    activity_start_date = models.DateField(default=date.today, null=False)
+    #have to generate activity_end_date automatically. Meaning that it should be a calculated field
+    activity_completion_reward = models.CharField(max_length=128, blank=True)
+
+class LockinActivityNotes(models.Model):
+    note_text = models.TextField()
+    note_activity_id = models.ForeignKey(LockinActivity, on_delete=models.CASCADE)
+    created_at = models.DateField(unique=True)
