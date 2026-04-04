@@ -4,7 +4,7 @@ from datetime import date
 
 class LockinUserManager(BaseUserManager):
     
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, password, **extra_fields):
         if not email:
             raise ValueError("The Email field must be set")
         email = self.normalize_email(email)
@@ -13,7 +13,7 @@ class LockinUserManager(BaseUserManager):
         user.save(using=self.__db)
         return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
+    def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_supseruser", True)
         return self.create_superuser(email, password, **extra_fields)
