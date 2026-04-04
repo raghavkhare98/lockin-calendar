@@ -25,7 +25,7 @@ class LockinUser(AbstractUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
-    objects = LockinUserManager
+    objects = LockinUserManager()
 
     @property
     def username(self):
