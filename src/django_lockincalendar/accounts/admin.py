@@ -16,10 +16,20 @@ class LockinUserAdmin(UserAdmin):
     ]
     ordering = ["email"]
 
-class LockinActivityAdmin():
-    pass
+class LockinActivityAdmin(admin.ModelAdmin):
+    model = LockinActivity
+    list_display = [
+        'activity_username',
+        'activity_name',
+        'activity_description'
+    ]
 
-class LockinActivityNotes():
-    pass
+class LockinActivityNotesAdmin(admin.ModelAdmin):
+    model = LockinActivityNotes
+    list_display = [
+        'note_text',
+    ]
 
 admin.site.register(LockinUser, LockinUserAdmin)
+admin.site.register(LockinActivityNotes, LockinActivityNotesAdmin)
+admin.site.register(LockinActivity, LockinActivityAdmin)
