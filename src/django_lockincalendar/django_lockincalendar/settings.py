@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #-- Project specific apps --,
-    'accounts'
+    'accounts',
+    'django_lockincalendar'
 ]
 
 MIDDLEWARE = [
