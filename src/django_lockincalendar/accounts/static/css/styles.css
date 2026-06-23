@@ -1,19 +1,35 @@
 :root{
     --primary-bg-color: #1b2242;
+    --surface-color: #f5f4f0;
+    --text-on-dark: #e8e6df;
+    --muted-text-color: #9a9590;
+    --accent-color: #c9a84c;
+    --accent-hover-color: #a88a3a;
 }
 
 .left-container{
-    color: white;
-}
-
-.left-container{
+    color: var(--text-on-dark);
     background-color: var(--primary-bg-color);
     min-height: 100vh;
 }
 
+.right-container{
+    background-color: var(--surface-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 button.btn.btn-primary{
-    background-color: var(--primary-bg-color);
-    border-color: var(--primary-bg-color);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+button.btn.btn-primary:hover{
+    background-color: var(--accent-hover-color);
+    border-color: var(--accent-hover-color);
 }
 
 .form-group{
@@ -21,6 +37,7 @@ button.btn.btn-primary{
 }
 
 input.form-control{
+    background-color: transparent;
     border-bottom: 1px solid #000000;
     /*If we don't set the other borders as 0, then they end up getting rendered*/
     border-radius: 0;
@@ -28,4 +45,18 @@ input.form-control{
     border-right: 0;
     border-left: 0;
     box-shadow: none;
+}
+
+main h4, .right-container p{
+    color: var(--muted-text-color);
+}
+
+body a{
+    color: var(--muted-text-color);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--accent-hover-color);
+    text-decoration: underline;
 }
