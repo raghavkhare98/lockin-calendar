@@ -63,12 +63,20 @@ input.form-control:focus{
     width: 100%;
 }
 
-.password-field .bi{
+.password-toggle{
     position: absolute;
     right: 0;
-    bottom: 0.35rem;
-    cursor: pointer;
+    bottom: 0.1rem;
+    padding: 0;
+    background: none;
+    border: none;
     color: var(--muted-text-color);
+    cursor: pointer;
+}
+
+.password-toggle:focus{
+    outline: none;
+    box-shadow: none;
 }
 
 main h4, .right-container p{
