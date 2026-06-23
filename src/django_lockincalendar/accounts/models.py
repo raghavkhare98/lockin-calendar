@@ -29,8 +29,6 @@ class LockinUserManager(BaseUserManager):
 
 class LockinUser(AbstractUser):
     email = models.EmailField(unique=True)
-    lockin_activities = models.CharField(max_length=128, default="")
-    date_joined = models.DateTimeField(auto_now_add=True)
     user_photo = models.ImageField(upload_to="uploads/", null=True, blank=True)
 
     objects = LockinUserManager()
