@@ -47,6 +47,30 @@ input.form-control{
     box-shadow: none;
 }
 
+input.form-control:focus{
+    background-color: transparent;
+    box-shadow: none;
+    border-color: var(--primary-bg-color);
+    outline: none;
+}
+
+.password-field{
+    position: relative;
+}
+
+.password-field input.form-control{
+    padding-right: 1.5rem;
+    width: 100%;
+}
+
+.password-field .bi{
+    position: absolute;
+    right: 0;
+    bottom: 0.35rem;
+    cursor: pointer;
+    color: var(--muted-text-color);
+}
+
 main h4, .right-container p{
     color: var(--muted-text-color);
 }
