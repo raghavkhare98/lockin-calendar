@@ -19,7 +19,7 @@ class LockinUserAdmin(UserAdmin):
 class LockinActivityAdmin(admin.ModelAdmin):
     model = LockinActivity
     list_display = [
-        'activity_username',
+        'user',
         'activity_name',
         'activity_description'
     ]

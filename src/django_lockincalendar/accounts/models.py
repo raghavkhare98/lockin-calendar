@@ -43,15 +43,17 @@ class LockinUser(AbstractUser):
         return self.get_username()
 
 class LockinActivity(models.Model):
-    activity_username = models.ForeignKey(LockinUser, on_delete=models.CASCADE)
-    activity_name = models.CharField(max_length=128, null=False)
-    activity_duration = models.DateField(default=date.today, null=False)
+    user = models.ForeignKey(LockinUser, on_delete=models.CASCADE)
+    activity_name = models.CharField(max_length=128)
+    activity_end_date = models.DateField() #renamed end_date because duration is wrong english, removed default today because the activity would expire immediately after creation
     activity_description = models.CharField(max_length=256, blank=True)
-    activity_start_date = models.DateField(default=date.today, null=False)
-    #have to generate activity_end_date automatically. Meaning that it should be a calculated field
+    activity_start_date = models.DateField(default=date.today)
     activity_completion_reward = models.CharField(max_length=128, blank=True)
 
 class LockinActivityNotes(models.Model):
     note_text = models.TextField()
-    note_activity_id = models.ForeignKey(LockinActivity, on_delete=models.CASCADE)
-    created_at = models.DateField(unique=True)
+    activity = models.ForeignKey(LockinActivity, on_delete=models.CASCADE)
+    created_at = models.DateField()
+
+    class Meta:
+        unique_together = [('activity', 'created_at')] #did this because created_at unique=True wouldn't have enabled more than 1 user to add a note (even in different accounts)
